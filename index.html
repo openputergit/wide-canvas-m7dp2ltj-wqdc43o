@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechTrix 2025 - PJLCE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .orbitron {
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-color: #0a192f;
+            z-index: -1;
+        }
+
+        .typewriter {
+            overflow: hidden;
+            border-right: .15em solid orange;
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: .15em;
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: orange; }
+        }
+
+        .countdown {
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .event-card {
+            transition: transform 0.3s;
+        }
+
+        .event-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .modal {
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        #youtube-container {
+            aspect-ratio: 16/9;
+            width: 100%;
+            max-width: 800px;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+    <div id="particles-js"></div>
+
+    <!-- Intro Animation -->
+    <div id="intro" class="fixed inset-0 flex items-center justify-center bg-black z-50">
+        <div class="text-center typewriter">
+            <h1 class="orbitron text-3xl md:text-5xl text-blue-500">
+                TechTrix 2K25
+            </h1>
+            <p class="mt-4 text-xl md:text-2xl">
+                Priyadarshini J.L. College of Engineering
+            </p>
+            <p class="mt-2 text-lg text-gray-400">
+                Department of Computer Science Engineering & AI
+            </p>
+        </div>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav class="fixed top-0 w-full bg-black/80 backdrop-blur-sm z-40 p-4">
+        <div class="container mx-auto flex flex-wrap justify-between items-center">
+            <div class="flex items-center">
+                <h1 class="orbitron text-2xl text-blue-500">Eventify</h1>
+                <h2 class="ml-4 text-xl">TechTrix 2K25</h2>
+            </div>
+            <div class="flex space-x-6">
+                <button onclick="scrollToSection('home')" class="hover:text-blue-500 transition">Home</button>
+                <button onclick="scrollToSection('about')" class="hover:text-blue-500 transition">About</button>
+                <button onclick="toggleModal('adminModal')" class="hover:text-blue-500 transition">Admin</button>
+                <button onclick="toggleModal('contactModal')" class="hover:text-blue-500 transition">Contact</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 pt-24">
+        <!-- Hero Section -->
+        <section id="home" class="min-h-screen flex flex-col items-center justify-center py-20">
+            <div id="youtube-container" class="rounded-lg overflow-hidden shadow-2xl">
+                <iframe 
+                    width="100%" 
+                    height="100%" 
+                    src="https://www.youtube.com/embed/QY7OtoGCCnw?autoplay=1&mute=1&loop=1&playlist=QY7OtoGCCnw" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <!-- Countdown Timer -->
+            <div class="countdown mt-10 text-center">
+                <h3 class="text-2xl mb-4">Time Remaining for TechTrix 2025</h3>
+                <div class="flex space-x-4 text-4xl">
+                    <div>
+                        <span id="days">000</span>
+                        <div class="text-sm">Days</div>
+                    </div>
+                    <div>
+                        <span id="hours">00</span>
+                        <div class="text-sm">Hours</div>
+                    </div>
+                    <div>
+                        <span id="minutes">00</span>
+                        <div class="text-sm">Minutes</div>
+                    </div>
+                    <div>
+                        <span id="seconds">00</span>
+                        <div class="text-sm">Seconds</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Events Section -->
+        <section class="py-20">
+            <h2 class="text-4xl text-center mb-12 orbitron">Events</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Event Cards -->
+                <div class="event-card bg-gray-800 rounded-lg p-6 shadow-xl">
+                    <h3 class="text-2xl mb-4">Hackathon</h3>
+                    <p class="mb-4">24-hour coding competition to solve real-world problems</p>
+                    <button onclick="toggleModal('eventModal')" class="bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded-full">Register Now</button>
+                </div>
+
+                <div class="event-card bg-gray-800 rounded-lg p-6 shadow-xl">
+                    <h3 class="text-2xl mb-4">Technical Paper Presentation</h3>
+                    <p class="mb-4">Present your research and innovations</p>
+                    <button onclick="toggleModal('eventModal')" class="bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded-full">Register Now</button>
+                </div>
+
+                <div class="event-card bg-gray-800 rounded-lg p-6 shadow-xl">
+                    <h3 class="text-2xl mb-4">Code Olympics</h3>
+                    <p class="mb-4">Competitive programming at its best</p>
+                    <button onclick="toggleModal('eventModal')" class="bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded-full">Register Now</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20">
+            <h2 class="text-4xl text-center mb-12 orbitron">About Us</h2>
+            <div class="bg-gray-800 p-8 rounded-lg shadow-xl">
+                <p class="mb-8">
+                    Priyadarshini J.L. College of Engineering (Autonomous) is a premier institution dedicated to excellence in technical education. 
+                    Located in Nagpur, we strive to create innovative and skilled engineers ready for the challenges of tomorrow.
+                </p>
+
+                <h3 class="text-2xl mb-4">Developer Team</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="text-center">
+                        <div class="w-20 h-20 mx-auto bg-gray-700 rounded-full mb-2"></div>
+                        <p>John Doe</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-20 h-20 mx-auto bg-gray-700 rounded-full mb-2"></div>
+                        <p>Jane Smith</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-20 h-20 mx-auto bg-gray-700 rounded-full mb-2"></div>
+                        <p>Mike Johnson</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-20 h-20 mx-auto bg-gray-700 rounded-full mb-2"></div>
+                        <p>Sarah Wilson</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Location Section -->
+        <section class="py-20">
+            <h2 class="text-4xl text-center mb-12 orbitron">Location</h2>
+            <div class="aspect-video rounded-lg overflow-hidden">
+                <iframe 
+                    width="100%" 
+                    height="100%" 
+                    frameborder="0" 
+                    style="border:0" 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3721.0290825545147!2d79.01760931493945!3d21.149989985934065!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4c0529518230f%3A0x45cd5a90c3c30f1f!2sPriyadarshini%20J.L.%20College%20of%20Engineering!5e0!3m2!1sen!2sin!4v1634898752249!5m2!1sen!2sin" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <div class="text-center mt-4">
+                <p>Priyadarshini J.L. College of Engineering (AUTONOMOUS)</p>
+                <p>Contact: 072760 10186</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modals -->
+    <!-- Event Registration Modal -->
+    <div id="eventModal" class="modal fixed inset-0 bg-black/80 hidden items-center justify-center z-50">
+        <div class="bg-gray-800 p-8 rounded-lg max-w-md w-full mx-4">
+            <h3 class="text-2xl mb-6">Event Registration</h3>
+            <form id="registrationForm" class="space-y-4">
+                <input type="text" placeholder="Name" class="w-full p-2 rounded bg-gray-700" required>
+                <input type="tel" placeholder="Contact Number" class="w-full p-2 rounded bg-gray-700" required>
+                <input type="text" placeholder="College Name" class="w-full p-2 rounded bg-gray-700" required>
+                <input type="email" placeholder="Email ID" class="w-full p-2 rounded bg-gray-700" required>
+                <input type="text" placeholder="Branch" class="w-full p-2 rounded bg-gray-700" required>
+                
+                <div>
+                    <select id="paymentType" class="w-full p-2 rounded bg-gray-700" onchange="togglePaymentFields()">
+                        <option value="">Select Payment Type</option>
+                        <option value="online">Online Payment</option>
+                        <option value="offline">Offline Payment</option>
+                    </select>
+                </div>
+
+                <div id="onlinePaymentFields" class="hidden space-y-4">
+                    <div class="flex space-x-4">
+                        <button type="button" class="flex-1 p-2 bg-blue-600 rounded">Google Pay</button>
+                        <button type="button" class="flex-1 p-2 bg-blue-600 rounded">PhonePe</button>
+                        <button type="button" class="flex-1 p-2 bg-blue-600 rounded">Paytm</button>
+                    </div>
+                    <input type="text" placeholder="UTR Number (12 digits)" pattern="\d{12}" class="w-full p-2 rounded bg-gray-700" required>
+                    <input type="file" accept="image/*" class="w-full p-2 rounded bg-gray-700" required>
+                </div>
+
+                <div id="offlinePaymentFields" class="hidden space-y-4">
+                    <input type="text" placeholder="Receipt Number" class="w-full p-2 rounded bg-gray-700" required>
+                    <input type="file" accept="image/*" class="w-full p-2 rounded bg-gray-700" required>
+                </div>
+
+                <div class="flex justify-end space-x-4">
+                    <button type="button" onclick="toggleModal('eventModal')" class="px-6 py-2 bg-gray-600 rounded">Cancel</button>
+                    <button type="submit" class="px-6 py-2 bg-blue-600 rounded">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal fixed inset-0 bg-black/80 hidden items-center justify-center z-50">
+        <div class="bg-gray-800 p-8 rounded-lg max-w-md w-full mx-4">
+            <h3 class="text-2xl mb-6">Contact Us</h3>
+            <form id="contactForm" class="space-y-4">
+                <input type="text" placeholder="Name" class="w-full p-2 rounded bg-gray-700" required>
+                <input type="tel" placeholder="Mobile Number" class="w-full p-2 rounded bg-gray-700" required>
+                <input type="text" placeholder="College Name" class="w-full p-2 rounded bg-gray-700" required>
+                <textarea placeholder="Issue Description" class="w-full p-2 rounded bg-gray-700 h-32" required></textarea>
+                <div class="flex justify-end space-x-4">
+                    <button type="button" onclick="toggleModal('contactModal')" class="px-6 py-2 bg-gray-600 rounded">Cancel</button>
+                    <button type="submit" class="px-6 py-2 bg-blue-600 rounded">Submit Query</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Login Modal -->
+    <div id="adminModal" class="modal fixed inset-0 bg-black/80 hidden items-center justify-center z-50">
+        <div class="bg-gray-800 p-8 rounded-lg max-w-md w-full mx-4">
+            <h3 class="text-2xl mb-6">Admin Login</h3>
+            <form id="adminForm" class="space-y-4">
+                <input type="text" placeholder="Username" class="w-full p-2 rounded bg-gray-700" required>
+                <input type="password" placeholder="Password" class="w-full p-2 rounded bg-gray-700" required>
+                <div class="flex justify-end space-x-4">
+                    <button type="button" onclick="toggleModal('adminModal')" class="px-6 py-2 bg-gray-600 rounded">Cancel</button>
+                    <button type="submit" class="px-6 py-2 bg-blue-600 rounded">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Particles.js Configuration
+        particlesJS("particles-js", {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: "#ffffff" },
+                shape: { type: "circle" },
+                opacity: { value: 0.5, random: false },
+                size: { value: 3, random: true },
+                line_linked: { enable: true, distance: 150, color: "#ffffff", opacity: 0.4, width: 1 },
+                move: { enable: true, speed: 6, direction: "none", random: false, straight: false, out_mode: "out", bounce: false }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: true, mode: "push" }, resize: true },
+                modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
+            },
+            retina_detect: true
+        });
+
+        // Intro Animation
+        setTimeout(() => {
+            document.getElementById('intro').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('intro').style.display = 'none';
+            }, 1000);
+        }, 3000);
+
+        // Countdown Timer
+        function updateCountdown() {
+            const eventDate = new Date('March 21, 2025 00:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+
+            document.getElementById('days').textContent = String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(3, '0');
+            document.getElementById('hours').textContent = String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Modal Functions
+        function toggleModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            } else {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }
+        }
+
+        function togglePaymentFields() {
+            const paymentType = document.getElementById('paymentType').value;
+            const onlineFields = document.getElementById('onlinePaymentFields');
+            const offlineFields = document.getElementById('offlinePaymentFields');
+
+            if (paymentType === 'online') {
+                onlineFields.classList.remove('hidden');
+                offlineFields.classList.add('hidden');
+            } else if (paymentType === 'offline') {
+                onlineFields.classList.add('hidden');
+                offlineFields.classList.remove('hidden');
+            } else {
+                onlineFields.classList.add('hidden');
+                offlineFields.classList.add('hidden');
+            }
+        }
+
+        // Form Submissions
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Registration Successful!');
+            toggleModal('eventModal');
+        });
+
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('We will reach you shortly!');
+            toggleModal('contactModal');
+        });
+
+        document.getElementById('adminForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Admin login successful!');
+            toggleModal('adminModal');
+        });
+
+        // Smooth Scroll
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+<script>document.body.addEventListener('wheel', e => { if (!e.ctrlKey) return; e.preventDefault(); return }, { passive: false })</script>
+	</body>
+</html>
